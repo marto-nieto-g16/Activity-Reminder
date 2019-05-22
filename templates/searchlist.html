@@ -1,0 +1,130 @@
+    <!DOCTYPE HTML>
+    <!--
+    	Activity Reminder
+    	Github | https://github.com/marto-nieto-g16/Activity-Reminder.git
+      Autor: Marto Nieto Guerrero
+    	
+    -->
+    <html>
+    	<head>
+    		<title>{{t}}</title>
+    		<meta charset="utf-8" />
+    		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    		<link rel="stylesheet" href="static/assets/css/main.css" />
+        <script>
+      $( function() {
+        $( "#date" ).datepicker();
+      } );
+      </script>
+
+    	</head>
+    	<body class="is-preload">
+
+    		<!-- Wrapper -->
+    			<div id="wrapper">
+
+    				<!-- Main -->
+    					<div id="main">
+    						<div class="inner">
+
+    							<!-- Header -->
+    								<header id="header">
+    									<a href="index.html" class="logo"><strong>Resultado de </strong> la búsqueda</a>
+    									<ul class="icons">
+    										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+    										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    										<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+    										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    										<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+    									</ul>
+    								</header> 
+
+                    <!-- Banner -->
+    								<section id="banner">
+    									<div class="content">
+    										<header> 
+                      <hr>
+  {% if todos[0] %}
+  
+  <table>
+      <tr id="row">
+        <td class="status">Estado</td>
+        <td class="name"> Actividad</td>
+        <td class="desc">Descripción</td>
+        <td class="date">Fecha Entrega</td>
+        <td class="pr">Encargado</td>
+    <td class="func"> </td>
+    <td class="func"> </td>
+      </tr>
+    {% for todo in todos %}
+    <tr class="datas">
+      <td><a href="./done?_id={{ todo['_id'] }}"><input type="image" src="static/images/{{todo['done']}}.png" alt="Submit ME"></a></td>
+      <td class="name">{{ todo["name"] }}</td>
+      <td class="desc">{{ todo["desc"] }}</td>
+      <td class="date">{{ todo["date"] }}</td>
+      <td class="pr">{{ todo["pr"] }}</td>
+      <td class="func1"><a href="./remove?_id={{ todo['_id'] }}"><button type="submit">Eliminar</button></a></td>
+      <td class="func1"><a href="./update?_id={{ todo['_id'] }}"><button type="submit">EDITAR</button></a></td>
+    </tr>
+    {% endfor %}
+  {% else %}
+    <h4>No se han Encontrado Resultados !!</h4>
+  {% endif %}
+  </table>
+  <a href="/">Regresar a la Lista de Actividades</a>
+    										</header>
+
+    									</div>
+    									
+    								</section>
+
+    							<!-- Section -->
+    								<section>
+    									
+    								</section>
+
+    							
+
+    						</div>
+    					</div>
+
+    				<!-- Sidebar -->
+    					<div id="sidebar">
+    						<div class="inner">
+
+    							
+
+    							<!-- Menu -->
+    								<nav id="menu">
+    									<header class="major">
+    										<h2>Menu</h2>
+    									</header>
+    									<ul>
+    										
+    										<li><a href="/list" class="{{ a1 }}">Todas</a></li>
+    										<li><a href="/" class="{{ a2 }}">Incompletas</a></li>
+    										<li><a href="/completed" class="{{ a3 }}">Terminadas</a></li>
+    									</ul>
+    								</nav>
+
+    							
+    							<!-- Footer -->
+    								<footer id="footer">
+    									<p class="copyright">&copy; Activity Reminder.  2019</a>.<b> Design: <a href="#">Marto Nieto Guerrero</a>.</p>
+    								</footer>
+
+    						</div>
+    					</div>
+
+    			</div>
+
+    		<!-- Scripts -->
+    			<script src="static/assets/js/jquery.min.js"></script>
+    			<script src="static/assets/js/browser.min.js"></script>
+    			<script src="static/assets/js/breakpoints.min.js"></script>
+    			<script src="static/assets/js/util.js"></script>
+    			<script src="static/assets/js/main.js"></script>
+
+
+    	</body>
+    </html>

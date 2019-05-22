@@ -1,0 +1,107 @@
+    <!DOCTYPE HTML>
+    <!--
+    	Activity Reminder
+    	Github | https://github.com/marto-nieto-g16/Activity-Reminder.git
+      Autor: Marto Nieto Guerrero
+    	
+    -->
+    <html>
+    	<head>
+    		<title>{{t}}</title>
+    		<meta charset="utf-8" />
+    		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    		<link rel="stylesheet" href="static/assets/css/main.css" />
+        <script src="static/assets/js/jquery-3.2.1.min.js"></script>
+        <script src="static/assets/js/alertify.js"></script>
+    	</head>
+    	<body class="is-preload">
+        <!-- Wrapper -->
+    			<div id="wrapper">
+
+    				<!-- Main -->
+    					<div id="main">
+    						<div class="inner">
+    							<!-- Header -->
+    								<header id="header">
+    									<a href="index.html" class="logo"><strong>Actualizacion </strong> Actividad</a>
+    									<ul class="icons">
+    										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+    										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    										<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+    										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    										<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+    									</ul>
+    								</header> 
+
+                    <!-- Banner -->
+    								<section id="banner">
+    									<div class="content">
+    										<header> 
+                      <form action="/action3" method="POST">
+                        {% for task in tasks %}
+                            <td> ID de la Actividad</td><td> : </td><td><input type="text" name="_id" value="{{ task['_id'] }}" hidden readonly>
+                              <table>
+                                <tr>
+                                  <td>Actividad</td><td> : </td><td><input type="text" name="name" value="{{ task['name'] }}" placeholder="{{ task['name'] }}"></td>
+                                </tr>
+                                <tr>
+                                  <td>Descripcion</td><td> : </td><td><textarea type="text" name="desc" rows=3 cols=30 placeholder="{{ task['desc'] }}"> {{ task['desc'] }} </textarea></td>
+                                </tr>
+                                <tr>
+                                  <td>Fecha Entrega</td><td> : </td><td><input type="text" name="date" value="{{ task['date'] }}" placeholder="{{ task['date'] }}"></td>
+                                </tr>
+                                <tr>
+                                  <td>Encargado</td><td> : </td><td><input type="text" name="pr" value="{{ task['pr'] }}" placeholder="{{ task['pr'] }}">
+                                  </td>
+                                </tr>
+                              </table>
+                        {% endfor %}
+                        <button type="submit" id="ejecuta"> Actualizar Actividad </button>
+                        <br/>
+                      </form>
+                      <a href="/">Regresar a la Lista de Actividades</a>
+                    </header>
+                  </div>
+                </section>
+    						</div>
+    					</div>
+              <!-- Sidebar -->
+    					<div id="sidebar">
+                <div class="inner">
+                  <!-- Menu -->
+    								<nav id="menu">
+    									<header class="major">
+    										<h2>Menu</h2>
+    									</header>
+    									<ul>
+    										<li><a href="/list" class="{{ a1 }}">Todas</a></li>
+    										<li><a href="/" class="{{ a2 }}">Incompletas</a></li>
+    										<li><a href="/completed" class="{{ a3 }}">Terminadas</a></li>
+    									</ul>
+    								</nav>
+                    <!-- Footer -->
+    								<footer id="footer">
+    									<p class="copyright">&copy; Activity Reminder.  2019</a>.<b> Design: <a href="#">Marto Nieto Guerrero</a>.</p>
+    								</footer>
+    						</div>
+    					</div>
+    			</div>
+          <!-- Scripts -->
+    			<script src="static/assets/js/jquery.min.js"></script>
+    			<script src="static/assets/js/browser.min.js"></script>
+    			<script src="static/assets/js/breakpoints.min.js"></script>
+    			<script src="static/assets/js/util.js"></script>
+    			<script src="static/assets/js/main.js"></script>
+    	</body>
+    </html>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+      
+      $('#ejecuta').click(function(){
+          alert("Información Actualizada Correctamete")
+        //alertify.error("fallo el servidor :(");
+        alertify.success("este es un mensaje de exito ");
+      });
+    })
+  </script>

@@ -1,0 +1,171 @@
+    <!DOCTYPE HTML>
+    <!--
+    	Activity Reminder
+    	Github | https://github.com/marto-nieto-g16/Activity-Reminder.git
+      Autor: Marto Nieto Guerrero
+    	
+    -->
+    <html>
+    	<head>
+    		<title>{{t}}</title>
+    		<meta charset="utf-8" />
+    		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    		<link rel="stylesheet" href="static/assets/css/main.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+      $( function() {
+        $( "#date" ).datepicker();
+      } );
+      </script>
+
+    	</head>
+    	<body class="is-preload">
+
+    		<!-- Wrapper -->
+    			<div id="wrapper">
+
+    				<!-- Main -->
+    					<div id="main">
+    						<div class="inner">
+
+    							<!-- Header -->
+    								<header id="header">
+    									<a href="index.html" class="logo"><strong>Listas </strong> de Actividades</a>
+    									<ul class="icons">
+    										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+    										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    										<li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+    										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+    										<li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
+    									</ul>
+    								</header> 
+
+                    <!-- Banner -->
+    								<section id="banner">
+    									<div class="content">
+    										
+                          <!-- Search -->
+                          <hr>
+                          {% if todos[0] %}
+                          <div span="right"> 
+                            <form action="/search"  method="GET" >
+        <table class="none" id="close">
+        <tr>
+        <td></td><td></td>
+        <td><big><b>Búsqueda:</b></big></td>
+        <td><select name="refer" required>
+          <option value="name">Nombre de la Actividad </option>
+          <option value="date">Fecha Entrega</option>
+          <option value="pr">Encargado</option>
+          <section id="search" class="alt">
+          <input type="text" name="key" id="query" placeholder="Búscardor" />
+        </section>
+        </select></td>
+        </tr>
+        </table>
+            </form>
+                </div>
+                  
+                  <table class="rwd_auto fontsize">
+                  <thead>
+                    <tr>
+                      <th class="status">Estado</th>
+                      <th class="name"> Actividad</th>
+                      <th class="desc">Descripción</th>
+                      <th class="date">Fecha Entrega</th>
+                      <th class="pr">Encargado</th>
+                      <th class="func1"> </th>
+                      <th class="func2"> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     {% for todo in todos %}
+                        <tr class="datas">
+                        <td><a href="./done?_id={{ todo['_id'] }}"><input type="image" src="static/images/{{todo['done']}}.png" alt="Submit ME"></a></td>
+          <td class="name">{{ todo["name"] }}</td>
+          <td class="desc">{{ todo["desc"] }}</td>
+          <td class="date">{{ todo["date"] }}</td>
+          <td class="pr">{{ todo["pr"] }}</td>
+          <td class="func1"><a href="./remove?_id={{ todo['_id'] }}"><button type="submit">Eliminar</button></a></td>
+          <td class="func1"><a href="./update?_id={{ todo['_id'] }}"><button type="submit">EDITAR</button></a></td>
+        </tr>
+              {% endfor %}
+              </tbody>
+              </table>
+             
+              {% else %}
+                <h1>Lista de Actividades: Vacia !!</h1>
+              {% endif %}
+              <hr/>
+              <form action="/action" method="POST">
+               
+                <tr>
+                  <td><b><big><label>Agregar Actividad  : </label></big></b></td>
+                </tr>
+                <tr>
+                <td><input type="text" name="name" maxlength="15" placeholder="Nombre de la Actividad " /></td><br/>
+                <td><textarea name="desc" rows="4" cols="30" placeholder="Descripción..." required></textarea></td><br>
+                <td>Fecha Entrega</td><td>:  <td><input type="date" name="date"  id= "date" placeholder="Fecha de Entrega" /></td><br/><br/>
+                <td><input type="text" name="pr" maxlength="10" placeholder="Encargado" /></td><br/>
+                <td><button type="submit"> Crear </button></td>
+                </tr>
+              </form>
+              
+    											
+    										
+
+    									</div>
+    									
+    								</section>
+
+    							<!-- Section -->
+    								<section>
+    									
+    								</section>
+
+    							
+
+    						</div>
+    					</div>
+
+    				<!-- Sidebar -->
+    					<div id="sidebar">
+    						<div class="inner">
+
+    							
+
+    							<!-- Menu -->
+    								<nav id="menu">
+    									<header class="major">
+    										<h2>Menu</h2>
+    									</header>
+    									<ul>
+    										
+    										<li><a href="/list" class="{{ a1 }}">Todas</a></li>
+    										<li><a href="/" class="{{ a2 }}">Incompletas</a></li>
+    										<li><a href="/completed" class="{{ a3 }}">Terminadas</a></li>
+    									</ul>
+    								</nav>
+
+    							<!-- Footer -->
+    								<footer id="footer">
+    									<p class="copyright">&copy; Activity Reminder.  2019</a>.<b> Design: <a href="#">Marto Nieto Guerrero</a>.</p>
+    								</footer>
+
+    						</div>
+    					</div>
+
+    			</div>
+
+    		<!-- Scripts -->
+    			<script src="static/assets/js/jquery.min.js"></script>
+    			<script src="static/assets/js/browser.min.js"></script>
+    			<script src="static/assets/js/breakpoints.min.js"></script>
+    			<script src="static/assets/js/util.js"></script>
+    			<script src="static/assets/js/main.js"></script>
+    	</body>
+    </html>
