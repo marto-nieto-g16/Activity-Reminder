@@ -1,28 +1,18 @@
-### Programa Simple Desarrollado Con Python, Flask y MongoDB
+### Lista de Actividades, Desarrollado Con Python, Flask y MongoDB
 
-##### Instrucciones 
+##### Requisitos
 
-Descargar python desde https://www.python.org/downloads/ 
-Descargar MongoDB desde https://www.mongodb.com/download-center#community 
+		- Python 2.7
+		- MongoDB 
 
-##### Instalar Flask, bson & pymongo 
+		- Flask: 	pip install Flask
+		- bson:		pip install bson
+		- pymongo:	pip install pymongo 
 
-pip install Flask  
-pip install bson 
-pip install pymongo 
-
-##### Descargar / clonar el código fuente de Github
-
-https://github.com/marto-nieto-g16/Activity-Reminder.git
+##### Descargar clonar el código fuente de Github
+		https://github.com/marto-nieto-g16/Activity-Reminder.git
 
 ##### Ejecutar
+		python app.py
 
-Run app.py  
-
-y/o
-
-python app.py
-
-Nuestro servidor web local se ejecuta en el puerto 5000 por defecto. 
-
-##### Activity Reminder !!!
+#:Author: Marto Nieto Guerrero
